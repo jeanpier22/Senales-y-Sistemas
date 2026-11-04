@@ -1,0 +1,39 @@
+# Dependencias y compilados del sitio
+web/node_modules/
+web/dist/
+web/.env
+web/.env.local
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Intermedio de latexmk con XeLaTeX (el PDF sale de aqui, pero no se versiona)
+*.xdv
+
+# Python
+__pycache__/
+
+# Sistema
+Thumbs.db
+.DS_Store
+
+# ---------------------------------------------------------------------------
+# El PDF compilado SI se versiona.
+#
+# Practica_N/LaTeX/Practica_N.pdf es la version sin comprimir, la de archivo, y
+# web/public/practicas/labN/Practica_N.pdf es la ligera que sirve el sitio. Las
+# dos se quedan en el repositorio: GitHub Pages publica lo que hay en web/, y
+# tener el PDF versionado permite recuperar la guia exacta que se entrego en
+# clase aunque despues cambien las imagenes o el .tex.
+#
+# Bibliografia de consulta: si algun dia se anaden libros en PDF con derechos de
+# autor, van en una carpeta Libros/ y se excluye aqui. Una vez dentro del
+# historial de git ya no se pueden sacar, y este repositorio se publica.
+# ---------------------------------------------------------------------------
+Libros/
