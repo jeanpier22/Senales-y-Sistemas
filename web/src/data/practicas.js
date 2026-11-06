@@ -198,7 +198,7 @@ export const MATERIAL_CLASE = [
     subtitulo: 'Método trigonométrico y exponencial complejo',
     estado: 'disponible',
     tipo: 'Material de clase',
-    extension: '27 páginas',
+    extension: '24 páginas',
     resumen:
       'Un único ejercicio —la onda diente de sierra f(t) = t— resuelto paso a paso por los dos métodos: la serie de senos y cosenos y la serie de exponenciales complejas. Se demuestra la equivalencia entre ambos con las identidades de Euler, se explica qué son las frecuencias negativas y la simetría conjugada, y se cierra con la aproximación por armónicos y el fenómeno de Gibbs. Incluye apéndice de identidades, código en Python, ejercicios cortos y un ejercicio completo (onda cuadrada) para repetir todo el recorrido.',
     objetivos: [
@@ -221,7 +221,7 @@ export const MATERIAL_CLASE = [
     ],
     documento: {
       src: 'material/fourier/Series_de_Fourier.pdf',
-      paginas: 27,
+      paginas: 24,
       peso: '0.38 MB',
     },
     descargas: [
@@ -260,7 +260,7 @@ export const MATERIAL_CLASE = [
         archivo: 'material/fourier/Series_de_Fourier.tex',
         nombre: 'Series_de_Fourier.tex',
         tipo: 'TEX',
-        peso: '64 KB',
+        peso: '59 KB',
         destacado: false,
       },
     ],

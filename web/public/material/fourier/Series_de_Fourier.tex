@@ -84,6 +84,16 @@
 %  C_n = -2j/(n pi), la serie vale 1 en t = pi/2 (serie de Leibniz), el
 %  sobrepico de Gibbs es 8,95 % del salto a N = 200 (pico 1,179) y Parseval da
 %  1 por los dos lados.
+%
+%  Version 4 - Apendice recortado (de 7 a 2 apartados).
+%  Lo pide el autor: salian demasiadas hojas. Se quito la tabla de
+%  trigonometria (suma de angulos, producto a suma...), la de paridad y la de
+%  integrales: las dos ultimas ya estan en el cuerpo (seccion IV y V) y la
+%  primera no se usa en ningun paso. Numeros complejos y Euler se fundieron en
+%  una sola tabla (A.1) y queda ademas la ortogonalidad (A.2), que justifica las
+%  formulas de los coeficientes. Parseval tambien se quito, a peticion del autor
+%  ("con el apendice 1 y 2 suficiente"). El cuaderno conserva el apendice
+%  completo, con Parseval: alli no cuesta hojas.
 %=======================================================================
 
 \documentclass[11pt,a4paper]{article}
@@ -1114,99 +1124,37 @@ Par / impar & par: $b_n=0$ (solo cosenos); impar: $a_n=0$ (solo senos)\\
 
 \FloatBarrier
 %=======================================================================
+\needspace{22\baselineskip}
 \section*{Apéndice. Identidades útiles}
 \addcontentsline{toc}{section}{Apéndice. Identidades útiles}
 %=======================================================================
-Reúne las identidades que se usan, o que conviene tener a mano, al trabajar con series de
-Fourier.
+Identidades que se usan, o que conviene tener a mano, en las series de Fourier.
 
-\subsection*{A.1. Números complejos y potencias de \texorpdfstring{$j$}{j}}
+\subsection*{A.1. Números complejos y Euler}
 \begin{table}[H]
 \centering
-\renewcommand{\arraystretch}{1.5}
+\renewcommand{\arraystretch}{1.45}
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.4cm}X}
 \toprule
 \textbf{Identidad} & \textbf{Expresión}\\
 \midrule
-Unidad imaginaria & $j^{2}=-1$\\
-Inverso de $j$ & $\dfrac{1}{j}=-j$\\
+Unidad imaginaria & $j^{2}=-1$,\quad $\dfrac{1}{j}=-j$\\
 Potencias de $j$ & $j^{0}=1,\;j^{1}=j,\;j^{2}=-1,\;j^{3}=-j,\;j^{4}=1$ (se repite cada 4)\\
-Conjugado & $(a+jb)^{*}=a-jb$\\
-Módulo & $|a+jb|=\sqrt{a^{2}+b^{2}}=\sqrt{zz^{*}}$\\
+Conjugado y módulo & $(a+jb)^{*}=a-jb$,\quad $|a+jb|=\sqrt{a^{2}+b^{2}}=\sqrt{zz^{*}}$\\
 Parte real e imaginaria & $\Real\{z\}=\dfrac{z+z^{*}}{2}$,\quad $\Imag\{z\}=\dfrac{z-z^{*}}{2j}$\\
-Conjugado de un producto & $(z_1z_2)^{*}=z_1^{*}z_2^{*}$\\
-Forma polar & $z=|z|\,e^{j\angle z}$\\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\subsection*{A.2. Euler y exponenciales complejas}
-\begin{table}[H]
-\centering
-\renewcommand{\arraystretch}{1.5}
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.4cm}X}
-\toprule
-\textbf{Identidad} & \textbf{Expresión}\\
-\midrule
-Euler & $e^{j\theta}=\cos\theta+j\sen\theta$\\
-Conjugada & $\big(e^{j\theta}\big)^{*}=e^{-j\theta}$\\
-Módulo unitario & $|e^{j\theta}|=1$\\
-Producto & $e^{j\alpha}e^{j\beta}=e^{j(\alpha+\beta)}$\\
-De Moivre & $\big(e^{j\theta}\big)^{n}=e^{jn\theta}=\cos(n\theta)+j\sen(n\theta)$\\
-Valores notables & $e^{j0}=1,\;e^{j\pi/2}=j,\;e^{j\pi}=-1,\;e^{j3\pi/2}=-j,\;e^{j2\pi}=1$\\
-Periodicidad & $e^{j(\theta+2\pi)}=e^{j\theta}$\\
-Para $n$ entero & $e^{jn\pi}=e^{-jn\pi}=(-1)^{n}$,\quad $e^{jn2\pi}=1$\\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\subsection*{A.3. Trigonometría}
-\begin{table}[H]
-\centering
-\renewcommand{\arraystretch}{1.5}
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.4cm}X}
-\toprule
-\textbf{Identidad} & \textbf{Expresión}\\
-\midrule
-Pitágoras & $\sen^{2}\theta+\cos^{2}\theta=1$\\
+Euler & $e^{j\theta}=\cos\theta+j\sen\theta$,\quad $\big(e^{j\theta}\big)^{*}=e^{-j\theta}$,\quad $|e^{j\theta}|=1$\\
+Producto y De Moivre & $e^{j\alpha}e^{j\beta}=e^{j(\alpha+\beta)}$,\quad $\big(e^{j\theta}\big)^{n}=e^{jn\theta}$\\
+Valores notables & $e^{j\pi/2}=j,\;e^{j\pi}=-1,\;e^{j3\pi/2}=-j,\;e^{j2\pi}=1$\\
+Para $n$ entero & $e^{jn\pi}=e^{-jn\pi}=(-1)^{n}$,\quad $\sen(n\pi)=0$,\quad $\cos(n\pi)=(-1)^{n}$\\
 Paridad & $\cos(-\theta)=\cos\theta$,\quad $\sen(-\theta)=-\sen\theta$\\
-Desfase de $\pi/2$ & $\sen\theta=\cos\!\left(\theta-\tfrac{\pi}{2}\right)$\\
-Suma de ángulos (seno) & $\sen(\alpha\pm\beta)=\sen\alpha\cos\beta\pm\cos\alpha\sen\beta$\\
-Suma de ángulos (coseno) & $\cos(\alpha\pm\beta)=\cos\alpha\cos\beta\mp\sen\alpha\sen\beta$\\
-Ángulo doble & $\sen2\theta=2\sen\theta\cos\theta$,\quad $\cos2\theta=\cos^{2}\theta-\sen^{2}\theta$\\
-Cuadrados & $\sen^{2}\theta=\dfrac{1-\cos2\theta}{2}$,\quad $\cos^{2}\theta=\dfrac{1+\cos2\theta}{2}$\\
-Producto a suma & $\sen\alpha\sen\beta=\tfrac{1}{2}[\cos(\alpha-\beta)-\cos(\alpha+\beta)]$\\
-Producto a suma & $\cos\alpha\cos\beta=\tfrac{1}{2}[\cos(\alpha-\beta)+\cos(\alpha+\beta)]$\\
-Producto a suma & $\sen\alpha\cos\beta=\tfrac{1}{2}[\sen(\alpha+\beta)+\sen(\alpha-\beta)]$\\
-Forma amplitud-fase & $a\cos\theta+b\sen\theta=A\cos(\theta-\varphi)$, con
-  $A=\sqrt{a^{2}+b^{2}}$ y $\varphi=\arctan\dfrac{b}{a}$ (si $a>0$)\\
-Múltiplos de $\pi$ & $\sen(n\pi)=0$,\quad $\cos(n\pi)=(-1)^{n}$ ($n$ entero)\\
 \bottomrule
 \end{tabularx}
 \end{table}
-La forma amplitud-fase es la tercera representación de la serie de Fourier: cada armónico
-se escribe como un solo coseno $A_n\cos(n\omega_0t-\varphi_n)$ con
-$A_n=\sqrt{a_n^{2}+b_n^{2}}=2|C_n|$. En este ejercicio $A_n=|b_n|=2/n$.
+Una tercera forma de la serie escribe cada armónico como un solo coseno,
+$A_n\cos(n\omega_0t-\varphi_n)$, con $A_n=\sqrt{a_n^{2}+b_n^{2}}=2|C_n|$. En este ejercicio
+$A_n=|b_n|=2/n$.
 
-\subsection*{A.4. Paridad e integrales sobre un intervalo simétrico}
-\begin{table}[H]
-\centering
-\renewcommand{\arraystretch}{1.6}
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.4cm}X}
-\toprule
-\textbf{Identidad} & \textbf{Expresión}\\
-\midrule
-Función par & $g(-t)=g(t)\;\Rightarrow\;\displaystyle\int_{-a}^{a}g\,dt=2\int_{0}^{a}g\,dt$\\
-Función impar & $g(-t)=-g(t)\;\Rightarrow\;\displaystyle\int_{-a}^{a}g\,dt=0$\\
-Producto & par$\cdot$par = par; impar$\cdot$impar = par; par$\cdot$impar = impar\\
-Serie de una función par & $b_n=0$ (solo cosenos y término DC)\\
-Serie de una función impar & $a_n=0$ (solo senos)\\
-Simetría de media onda & si $f(t+T/2)=-f(t)$, solo hay armónicos impares\\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\subsection*{A.5. Ortogonalidad de los armónicos}
+\subsection*{A.2. Ortogonalidad de los armónicos}
 Estas integrales justifican las fórmulas de $a_n$, $b_n$ y $C_n$. Para $m,n$ enteros
 positivos y un período completo:
 \begin{align*}
@@ -1218,58 +1166,6 @@ positivos y un período completo:
 donde $\delta_{mn}=1$ si $m=n$ y $0$ si $m\neq n$. \textbf{Idea:} multiplicar la serie por
 $e^{-jn\omega_0t}$ e integrar ``filtra'' el único término $n$ y anula todos los demás; por
 eso $C_n$ se obtiene con esa integral.
-
-\subsection*{A.6. Integrales usadas en el cálculo}
-\begin{table}[H]
-\centering
-\renewcommand{\arraystretch}{1.7}
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.4cm}X}
-\toprule
-\textbf{Identidad} & \textbf{Expresión}\\
-\midrule
-Por partes & $\displaystyle\int u\,dv=uv-\int v\,du$\\
-Seno & $\displaystyle\int\sen(nt)\,dt=-\dfrac{\cos(nt)}{n}$\\
-Coseno & $\displaystyle\int\cos(nt)\,dt=\dfrac{\sen(nt)}{n}$\\
-Exponencial & $\displaystyle\int e^{at}\,dt=\dfrac{e^{at}}{a}$ (con $a=-jn$ en este ejercicio)\\
-$t$ por seno & $\displaystyle\int t\sen(nt)\,dt=-\dfrac{t\cos(nt)}{n}+\dfrac{\sen(nt)}{n^{2}}$\\
-$t$ por coseno & $\displaystyle\int t\cos(nt)\,dt=\dfrac{t\sen(nt)}{n}+\dfrac{\cos(nt)}{n^{2}}$\\
-$t$ por exponencial & $\displaystyle\int te^{at}\,dt=\dfrac{te^{at}}{a}-\dfrac{e^{at}}{a^{2}}$\\
-\bottomrule
-\end{tabularx}
-\end{table}
-La última fila resume la sección~V: con $a=-jn$ se tiene $a^{2}=-n^{2}$ y queda
-$-\dfrac{te^{-jnt}}{jn}+\dfrac{e^{-jnt}}{n^{2}}$.
-
-\subsection*{A.7. Parseval: potencia de la señal}
-La potencia media de una señal periódica se calcula igual en el tiempo y en los coeficientes:
-\begin{equation*}
-  \boxed{\frac{1}{T}\int_{-T/2}^{T/2}|f(t)|^{2}\,dt=\sum_{n=-\infty}^{\infty}|C_n|^{2}
-  =\frac{a_0^{2}}{4}+\frac{1}{2}\sum_{n=1}^{\infty}\left(a_n^{2}+b_n^{2}\right)}
-\end{equation*}
-Para este ejercicio, por el lado del tiempo:
-\begin{equation*}
-  \frac{1}{2\pi}\int_{-\pi}^{\pi}t^{2}\,dt=\frac{1}{2\pi}\cdot\frac{2\pi^{3}}{3}=\frac{\pi^{2}}{3}
-\end{equation*}
-y por el lado de los coeficientes, con $|C_n|=1/|n|$ y $\sum_{n=1}^{\infty}1/n^{2}=\pi^{2}/6$:
-\begin{equation*}
-  \sum_{n\neq0}\frac{1}{n^{2}}=2\sum_{n=1}^{\infty}\frac{1}{n^{2}}=2\cdot\frac{\pi^{2}}{6}=\frac{\pi^{2}}{3}\;\checkmark
-\end{equation*}
-Coinciden, lo que confirma los coeficientes por un camino independiente. Además, la potencia
-captada por los primeros $N$ armónicos es $2\sum_{n=1}^{N}1/n^{2}$:
-
-\begin{table}[H]
-\centering
-\caption{Porcentaje de la potencia total $\pi^{2}/3$ que captan los primeros $N$ armónicos.}
-\renewcommand{\arraystretch}{1.3}
-\begin{tabular}{ccccccc}
-\toprule
-$N$ & 1 & 3 & 5 & 10 & 50\\
-\midrule
-Potencia captada & \qty{60.79}{\percent} & \qty{82.75}{\percent} & \qty{88.98}{\percent}
-  & \qty{94.21}{\percent} & \qty{98.80}{\percent}\\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \FloatBarrier
 %=======================================================================

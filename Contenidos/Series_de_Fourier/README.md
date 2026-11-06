@@ -7,7 +7,7 @@ concreta; si se fija una, basta con mover la carpeta a `Contenidos/Semana_N/`.
 |---|---|---|
 | `01_Serie_trigonometrica_y_compleja.ipynb` | Un único ejercicio, $f(t)=t$ en $(-\pi,\pi)$, resuelto por el método trigonométrico y por el exponencial complejo; demostración de la equivalencia vía Euler; frecuencias positivas y negativas; simetría conjugada; aproximación por armónicos y fenómeno de Gibbs | Semana 4 (exponencial compleja, par/impar) |
 
-| `LaTeX/Series_de_Fourier.pdf` | Versión impresa del notebook: ejercicio resuelto paso a paso, figuras, tablas, fórmulas de resumen, apéndice de identidades, ejercicios cortos y un ejercicio completo con la onda cuadrada, con respuestas de control (27 páginas) | — |
+| `LaTeX/Series_de_Fourier.pdf` | Versión impresa del notebook: ejercicio resuelto paso a paso, figuras, tablas, fórmulas de resumen, apéndice de identidades, ejercicios cortos y un ejercicio completo con la onda cuadrada, con respuestas de control (24 páginas) | — |
 
 ## Regenerar el PDF
 
