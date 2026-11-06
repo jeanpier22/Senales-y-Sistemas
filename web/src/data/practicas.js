@@ -178,3 +178,93 @@ export const PRACTICAS = [
 ]
 
 export const getPractica = (id) => PRACTICAS.find((p) => p.id === id)
+
+/**
+ * Material de clase (Contenidos/ del repositorio): documentos y notebooks que se
+ * dictan en clase, distintos de las guias de laboratorio.
+ *
+ * Publicar uno es igual que publicar una practica: copiar sus archivos a
+ * web/public/material/<id>/ y rellenar esta entrada. Una descarga con
+ * `externo: true` abre un enlace (p. ej. Colab) en vez de bajar un archivo.
+ * La seccion de la portada se oculta sola si el arreglo esta vacio.
+ */
+const COLAB =
+  'https://colab.research.google.com/github/jeanpier22/Senales-y-Sistemas/blob/main/Contenidos'
+
+export const MATERIAL_CLASE = [
+  {
+    id: 'fourier',
+    titulo: 'Series de Fourier',
+    subtitulo: 'Método trigonométrico y exponencial complejo',
+    estado: 'disponible',
+    tipo: 'Material de clase',
+    extension: '23 páginas',
+    resumen:
+      'Un único ejercicio —la onda diente de sierra f(t) = t— resuelto paso a paso por los dos métodos: la serie de senos y cosenos y la serie de exponenciales complejas. Se demuestra la equivalencia entre ambos con las identidades de Euler, se explica qué son las frecuencias negativas y la simetría conjugada, y se cierra con la aproximación por armónicos y el fenómeno de Gibbs. Incluye apéndice de identidades y código en Python.',
+    objetivos: [
+      'Distinguir período, frecuencia fundamental, frecuencia angular, armónicos y componente continua.',
+      'Calcular a₀, aₙ y bₙ de una señal periódica con paridad e integración por partes.',
+      'Calcular los coeficientes Cₙ de la serie exponencial compleja.',
+      'Demostrar la relación Cₙ = (aₙ − j·bₙ)/2 a partir de las identidades de Euler.',
+      'Interpretar las frecuencias positivas y negativas y la simetría conjugada C₋ₙ = Cₙ*.',
+      'Reconstruir la señal con un número finito de armónicos y reconocer el fenómeno de Gibbs.',
+    ],
+    temas: [
+      'Serie trigonométrica',
+      'Serie compleja',
+      'Identidades de Euler',
+      'Frecuencias negativas',
+      'Simetría conjugada',
+      'Parseval',
+      'Fenómeno de Gibbs',
+      'Python',
+    ],
+    documento: {
+      src: 'material/fourier/Series_de_Fourier.pdf',
+      paginas: 23,
+      peso: '0.35 MB',
+    },
+    descargas: [
+      {
+        etiqueta: 'Documento en PDF',
+        detalle:
+          'Resolución completa paso a paso, con figuras, tablas de coeficientes, fórmulas de resumen, apéndice de identidades y ejercicios propuestos',
+        archivo: 'material/fourier/Series_de_Fourier.pdf',
+        nombre: 'Series_de_Fourier_Senales_y_Sistemas.pdf',
+        tipo: 'PDF',
+        peso: '0.35 MB',
+        destacado: true,
+      },
+      {
+        etiqueta: 'Abrir en Google Colab',
+        detalle:
+          'Notebook ejecutable: verifica numéricamente cada coeficiente y permite cambiar el número de armónicos',
+        archivo: `${COLAB}/Series_de_Fourier/01_Serie_trigonometrica_y_compleja.ipynb`,
+        tipo: 'COLAB',
+        peso: 'en línea',
+        externo: true,
+        destacado: true,
+      },
+      {
+        etiqueta: 'Notebook (.ipynb)',
+        detalle: 'Mismo notebook, para descargar y abrir con Jupyter o subir a tu Drive',
+        archivo: 'material/fourier/01_Serie_trigonometrica_y_compleja.ipynb',
+        nombre: '01_Serie_trigonometrica_y_compleja.ipynb',
+        tipo: 'IPYNB',
+        peso: '53 KB',
+        destacado: false,
+      },
+      {
+        etiqueta: 'Fuente LaTeX',
+        detalle: 'Código .tex para recompilar con XeLaTeX o reutilizar el formato',
+        archivo: 'material/fourier/Series_de_Fourier.tex',
+        nombre: 'Series_de_Fourier.tex',
+        tipo: 'TEX',
+        peso: '56 KB',
+        destacado: false,
+      },
+    ],
+  },
+]
+
+export const getMaterial = (id) => MATERIAL_CLASE.find((m) => m.id === id)

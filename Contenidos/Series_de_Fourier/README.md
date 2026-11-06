@@ -7,6 +7,19 @@ concreta; si se fija una, basta con mover la carpeta a `Contenidos/Semana_N/`.
 |---|---|---|
 | `01_Serie_trigonometrica_y_compleja.ipynb` | Un único ejercicio, $f(t)=t$ en $(-\pi,\pi)$, resuelto por el método trigonométrico y por el exponencial complejo; demostración de la equivalencia vía Euler; frecuencias positivas y negativas; simetría conjugada; aproximación por armónicos y fenómeno de Gibbs | Semana 4 (exponencial compleja, par/impar) |
 
+| `LaTeX/Series_de_Fourier.pdf` | Versión impresa del notebook: ejercicio resuelto paso a paso, figuras, tablas, fórmulas de resumen, apéndice de identidades y ejercicios propuestos (23 páginas) | — |
+
+## Regenerar el PDF
+
+```bash
+python Contenidos/Series_de_Fourier/Codigo/generar_figuras.py     # figuras vectoriales
+cd Contenidos/Series_de_Fourier/LaTeX && xelatex Series_de_Fourier.tex   # dos pasadas
+```
+
+Compilar con **XeLaTeX** (Trebuchet MS). Como las figuras son vectoriales, el PDF no se
+comprime con `comprimir_pdf.py` (no hay imágenes que remuestrear). La copia que sirve
+la web está en `web/public/material/fourier/`; hay que volver a copiarla tras recompilar.
+
 ## Cómo usarlo
 
 Corre en Colab sin instalar nada: solo NumPy y Matplotlib. Para ver el efecto de añadir

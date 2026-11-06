@@ -1,7 +1,8 @@
 import { BookOpenCheck, GraduationCap, Sparkles } from 'lucide-react'
 import PracticaCard from '../components/PracticaCard'
+import MaterialCard from '../components/MaterialCard'
 import Cronograma from '../components/Cronograma'
-import { CURSO, PRACTICAS } from '../data/practicas'
+import { CURSO, MATERIAL_CLASE, PRACTICAS } from '../data/practicas'
 
 function Estadistica({ icono: Icono, valor, etiqueta }) {
   return (
@@ -97,6 +98,23 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* --------------------------------------------------- Material de clase */}
+      {MATERIAL_CLASE.length > 0 && (
+        <section className="mx-auto max-w-6xl px-5 pb-14 sm:px-8 lg:px-12">
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
+            Material de clase
+          </h2>
+          <p className="mt-2 text-slate-600 dark:text-slate-400">
+            Documentos y notebooks de los temas dictados, con la resolución paso a paso.
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {MATERIAL_CLASE.map((m, i) => (
+              <MaterialCard key={m.id} material={m} indice={i} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ------------------------------------------------------- Cronograma */}
       <Cronograma />

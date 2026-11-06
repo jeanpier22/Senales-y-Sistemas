@@ -30,7 +30,10 @@ Señales y Sistemas/
 │   │   └── _original/              material de partida, sin modificar
 │   └── Series_de_Fourier/        sección temática, no atada a una semana
 │       ├── NN_Tema.ipynb           mismas convenciones que Semana_N
-│       └── README.md
+│       ├── README.md
+│       ├── LaTeX/                  Series_de_Fourier.tex/.pdf (material de clase impreso)
+│       │   └── imagenes/             figuras PDF vectoriales
+│       └── Codigo/                 generar_figuras.py (produce las figuras)
 ├── Practica_N/                 una carpeta por práctica
 │   ├── LaTeX/
 │   │   ├── Practica_N.tex        fuente de la guía
@@ -41,7 +44,8 @@ Señales y Sistemas/
 ├── herramientas/               utilidades en Python
 ├── web/                        sitio React que se publica en GitHub Pages
 │   ├── public/practicas/labN/    archivos que descarga el visitante
-│   └── src/data/practicas.js     catálogo: el único archivo a editar
+│   ├── public/material/<id>/     archivos del material de clase
+│   └── src/data/practicas.js     catálogo (PRACTICAS y MATERIAL_CLASE): el único archivo a editar
 └── .github/workflows/deploy.yml  publicación automática
 ```
 
@@ -205,9 +209,8 @@ por las de 2,2 kΩ que suele haber a mano rompe la uniformidad de los escalones 
 - Compilar `Practica_2.pdf` y pasar la práctica a `estado: 'disponible'`.
 - Añadir la **Práctica 1** al catálogo cuando exista: la actual es la N.º 2, y el
   identificador `lab1` está libre.
-- Decidir si los notebooks de `Contenidos/` se publican en la web como descarga de la
-  semana. Hoy `web/src/data/practicas.js` solo cataloga prácticas; haría falta una
-  sección aparte para el material de clase.
-- Inicializar el repositorio: la carpeta tiene `.gitignore` y
-  `.github/workflows/deploy.yml`, pero todavía no hay `.git`, así que el despliegue
-  automático no puede dispararse.
+- Material de clase en la web: ya existe la sección (`MATERIAL_CLASE` en
+  `practicas.js`, página `#/material/<id>`) y publica Series de Fourier. Falta publicar
+  los notebooks de la Semana 4 de la misma forma si se quiere.
+- Activar GitHub Pages en `jeanpier22/Senales-y-Sistemas` (Settings → Pages →
+  Source: GitHub Actions). Hasta entonces el despliegue falla en `configure-pages`.

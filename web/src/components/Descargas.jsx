@@ -1,10 +1,12 @@
-import { Cpu, Download, FileCode2, FileText, FileType2 } from 'lucide-react'
+import { Cpu, Download, ExternalLink, FileCode2, FileText, FileType2, NotebookText } from 'lucide-react'
 
 const ICONOS = {
   PDF: FileText,
   TEX: FileCode2,
   DOC: FileType2,
   INO: Cpu,
+  IPYNB: NotebookText,
+  COLAB: NotebookText,
 }
 
 const COLORES = {
@@ -12,6 +14,8 @@ const COLORES = {
   TEX: 'from-teal-500 to-teal-700',
   DOC: 'from-sky-500 to-sky-700',
   INO: 'from-amber-500 to-amber-700',
+  IPYNB: 'from-orange-500 to-orange-700',
+  COLAB: 'from-yellow-500 to-orange-600',
 }
 
 /**
@@ -28,7 +32,9 @@ function ItemDescarga({ item }) {
   return (
     <a
       href={item.archivo}
-      download={item.nombre}
+      {...(item.externo
+        ? { target: '_blank', rel: 'noopener noreferrer' }
+        : { download: item.nombre })}
       className={[
         'group block rounded-xl border p-4 transition duration-300',
         item.destacado
@@ -53,7 +59,7 @@ function ItemDescarga({ item }) {
         </span>
 
         <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-slate-100 text-slate-500 transition group-hover:bg-brand-600 group-hover:text-white dark:bg-slate-800 dark:text-slate-400">
-          <Download className="h-4 w-4" />
+          {item.externo ? <ExternalLink className="h-4 w-4" /> : <Download className="h-4 w-4" />}
         </span>
       </div>
 
@@ -64,7 +70,7 @@ function ItemDescarga({ item }) {
   )
 }
 
-export default function Descargas({ items }) {
+export default function Descargas({ items, descripcion = 'Archivos de esta práctica' }) {
   if (!items?.length) return null
 
   return (
@@ -75,7 +81,7 @@ export default function Descargas({ items }) {
         </span>
         <div className="min-w-0">
           <h2 className="text-lg font-bold text-slate-900 dark:text-white">Descargas</h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400">Archivos de esta práctica</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{descripcion}</p>
         </div>
       </div>
 
