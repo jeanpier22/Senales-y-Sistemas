@@ -61,6 +61,29 @@
 %  ortogonalidad de los armonicos (que es lo que justifica las formulas de los
 %  coeficientes) y Parseval, que ademas sirve de comprobacion independiente
 %  de los C_n.
+%
+%  Version 3 - Ejercicios mas sencillos y un ejercicio completo.
+%  Lo pide el autor: los propuestos eran demasiado dificiles (error cuadratico
+%  medio, cambiar el periodo en el codigo) y faltaba uno donde el alumno haga
+%  TODO el recorrido por su cuenta. Ahora hay dos partes. La A son cinco
+%  ejercicios de una sola idea (frecuencias, paridad, Euler en ambos sentidos,
+%  valor en un salto). La B repite el recorrido completo con la onda cuadrada,
+%  guiado en 8 pasos.
+%
+%  POR QUE LA ONDA CUADRADA. Es la mas facil con la que se llega a las dos
+%  series: es impar (a_n = 0 sin integrar) y b_n sale de integrar sen(nt), sin
+%  integracion por partes. Se descartaron |t| (pide partes y tiene a_n distinto
+%  de cero, es otro nivel) y el pulso en (0, pi) (no es ni par ni impar, hay que
+%  calcular a_n y b_n). Ademas tiene lo que ensena la diente de sierra mas un
+%  detalle nuevo: los armonicos pares valen cero, y el alumno debe separar n par
+%  de n impar. Para que se vea como se pide el paso 3, la primera fila de la
+%  tabla viene resuelta (n = 1) y el codigo trae la pista de np.where.
+%
+%  RESPUESTAS. Van en pagina aparte para que no se lean sin querer. Todas se
+%  comprobaron numericamente antes de escribirlas: b_n = 4/(n pi) en impares,
+%  C_n = -2j/(n pi), la serie vale 1 en t = pi/2 (serie de Leibniz), el
+%  sobrepico de Gibbs es 8,95 % del salto a N = 200 (pico 1,179) y Parseval da
+%  1 por los dos lados.
 %=======================================================================
 
 \documentclass[11pt,a4paper]{article}
@@ -1253,26 +1276,199 @@ Potencia captada & \qty{60.79}{\percent} & \qty{82.75}{\percent} & \qty{88.98}{\
 \section*{Ejercicios propuestos}
 \addcontentsline{toc}{section}{Ejercicios propuestos}
 %=======================================================================
+
+\subsection*{Parte A. Ejercicios cortos}
+Cada uno se resuelve en pocas líneas y practica una sola idea del documento. Las
+respuestas de control están al final.
+
 \begin{enumerate}
-    \item Repite el procedimiento, con ambos métodos, para la onda cuadrada $f(t)=1$ en
-          $(0,\pi)$ y $f(t)=-1$ en $(-\pi,0)$, con $T=2\pi$. Verifica con el código de la
-          sección~XI que solo aparecen armónicos impares.
-          \textit{Respuesta de control:} $b_n=\dfrac{4}{n\pi}$ para $n$ impar y $0$ para $n$
-          par; $C_n=-\dfrac{2j}{n\pi}$ para $n$ impar.
-    \item Para la señal de este documento, grafica el espectro de magnitud $|C_n|$ y de fase
-          $\angle C_n$ para $n=-10,\dots,10$. ¿Qué simetría tiene cada uno?
-          \textit{Respuesta de control:} la magnitud es par; la fase es impar
-          (figura~\ref{fig:espectro}).
-    \item ¿Cuántos armónicos hacen falta para que el error cuadrático medio
-          $\dfrac{1}{2\pi}\displaystyle\int|f-f_N|^{2}dt$ sea menor que $0{,}1$?
-          \textit{Pista:} ese error vale $2\sum_{n>N}1/n^{2}\approx 2/N$.
-          \textit{Respuesta de control:} $N=20$.
-    \item Demuestra, con la técnica de la sección~VI, que para una función \textbf{par} los
-          coeficientes son reales y $C_{-n}=C_n$.
-    \item Modifica \py{senal\_original} y \py{aproximacion} para una señal de período
-          $T=4$~s. ¿Cuánto vale ahora $\omega_0$ y qué cambia en \py{np.sin(n * t)}?
-          \textit{Respuesta de control:} $\omega_0=\pi/2$~rad/s; el argumento pasa a ser
-          \py{n * w0 * t}.
+    \item \textbf{Frecuencias.} Calcula la frecuencia fundamental $f_0$ y la frecuencia
+          angular $\omega_0$ de una señal con período $T=4$~s y de otra con
+          $T=0{,}02$~s.
+          \lineasresp{1}
+    \item \textbf{Paridad.} Sin integrar, indica qué coeficientes valen cero en la serie de
+          Fourier de cada señal (todas con $T=2\pi$ y definidas en $(-\pi,\pi)$):
+          (a)~$f(t)=t^{2}$; (b)~$f(t)=t^{3}$; (c)~$f(t)=5$.
+          \lineasresp{2}
+    \item \textbf{De trigonométrica a compleja.} Escribe $f(t)=3\cos(2t)+4\sen(2t)$ como
+          suma de exponenciales complejas. ¿Cuánto valen $C_2$ y $C_{-2}$?
+          \textit{Pista:} usa $C_n=\dfrac{a_n-jb_n}{2}$.
+          \lineasresp{2}
+    \item \textbf{De compleja a trigonométrica.} Una señal real tiene $C_3=1+2j$. ¿Cuánto
+          valen $C_{-3}$, $a_3$ y $b_3$?
+          \textit{Pista:} usa $C_{-n}=C_n^{*}$, $a_n=C_n+C_{-n}$ y $b_n=j(C_n-C_{-n})$.
+          \lineasresp{2}
+    \item \textbf{Convergencia en un salto.} Una señal periódica salta de $2$ a $6$ en
+          $t=1$. ¿A qué valor converge su serie de Fourier en $t=1$?
+          \lineasresp{1}
+\end{enumerate}
+
+\FloatBarrier
+\subsection*{Parte B. Ejercicio completo: el mismo recorrido con otra señal}
+Repite, con la \textbf{onda cuadrada}, todo el camino que se hizo con la diente de
+sierra (figura~\ref{fig:cuadrada}):
+\begin{equation*}
+  f(t)=\begin{cases}-1, & -\pi<t<0\\[2pt] \;\;\,1, & 0<t<\pi\end{cases}
+  \qquad T=2\pi
+\end{equation*}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.85\linewidth]{onda_cuadrada.pdf}
+\caption{Onda cuadrada del ejercicio de la Parte~B, con $T=2\pi$.}
+\label{fig:cuadrada}
+\end{figure}
+
+Esta señal es más sencilla de integrar: \textbf{no necesita integración por partes}, solo la
+integral de $\sen(nt)$ y la de $e^{-jnt}$. Se resuelve en este orden:
+
+\begin{enumerate}[label=\textbf{Paso \arabic*.},leftmargin=*,labelsep=0.6em]
+    \item \textbf{Preparación.} Calcula $\omega_0$. Decide, \emph{antes de integrar}, si la
+          señal es par o impar y qué coeficientes serán cero.
+          \lineasresp{2}
+    \item \textbf{$a_0$ y $a_n$.} Calcúlalos o justifica con la paridad que son cero.
+          \lineasresp{2}
+    \item \textbf{$b_n$.} Reduce la integral al tramo $[0,\pi]$, intégrala y evalúa con
+          $\cos(n\pi)=(-1)^{n}$. Obtén una expresión \textbf{distinta para $n$ par y para
+          $n$ impar}.
+          \lineasresp{4}
+    \item \textbf{Serie trigonométrica.} Escríbela y desarrolla los tres primeros términos no
+          nulos.
+          \lineasresp{2}
+    \item \textbf{$C_n$ por integración directa.} Parte la integral en dos tramos
+          ($-\pi$ a $0$ y $0$ a $\pi$). Calcula $C_0$ aparte.
+          \lineasresp{4}
+    \item \textbf{Equivalencia.} Comprueba que $C_n=\dfrac{a_n-jb_n}{2}$ da el mismo
+          resultado y escribe también $C_{-n}$.
+          \lineasresp{2}
+    \item \textbf{Tabla.} Completa los coeficientes para $n=1,\dots,5$ y comprueba
+          $C_{-n}=C_n^{*}$. La primera fila ya está resuelta como modelo.
+\end{enumerate}
+
+\begin{table}[H]
+\centering
+\caption{Coeficientes de la onda cuadrada (completar).}
+\renewcommand{\arraystretch}{2.0}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$n$ & $a_n$ & $b_n$ & $C_n$ & $C_{-n}$\\
+\hline
+1 & $0$ & $\dfrac{4}{\pi}$ & $-\dfrac{2j}{\pi}$ & $\dfrac{2j}{\pi}$\\
+\hline
+2 & \hspace{1.6cm} & \hspace{1.6cm} & \hspace{1.6cm} & \hspace{1.6cm}\\
+\hline
+3 & & & &\\
+\hline
+4 & & & &\\
+\hline
+5 & & & &\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{enumerate}[label=\textbf{Paso \arabic*.},leftmargin=*,labelsep=0.6em,start=8]
+    \item \textbf{Aproximación.} Completa la plantilla de código de abajo, grafica $f_N$ con
+          $N=1,3,10$ y $50$, y responde: ¿cuánto vale la serie en $t=0$? ¿Y en
+          $t=\pi/2$? ¿Aparece el fenómeno de Gibbs?
+          \lineasresp{3}
+\end{enumerate}
+
+\needspace{24\baselineskip}
+\begin{Verbatim}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def onda_cuadrada(t):
+    """f(t) = +1 en (0, pi) y -1 en (-pi, 0), repetida con período 2*pi."""
+    return np.sign(np.sin(t))
+
+def aproximacion_cuadrada(t, N):
+    """Suma parcial con N armónicos."""
+    n = np.arange(1, N + 1).reshape(-1, 1)     # columna n = 1..N
+    bn = 0 * n          # <-- COMPLETA con tu resultado del paso 3.
+                        #     Pista: np.where(n % 2 == 1, valor_impar, valor_par)
+    return np.sum(bn * np.sin(n * t), axis=0)
+
+t = np.linspace(-2 * np.pi, 2 * np.pi, 4000)
+plt.plot(t, onda_cuadrada(t), label="f(t) original")
+plt.plot(t, aproximacion_cuadrada(t, 10), label="Serie con N = 10 armónicos")
+plt.title("Onda cuadrada con N = 10 armónicos")
+plt.xlabel("Tiempo t [s]"); plt.ylabel("Amplitud"); plt.legend(); plt.show()
+
+print("Serie en t = 0    :", aproximacion_cuadrada(np.array([0.0]), 200)[0])
+print("Serie en t = pi/2 :", aproximacion_cuadrada(np.array([np.pi / 2]), 200)[0])
+\end{Verbatim}
+
+\begin{notatec}{verificar el resultado}
+El notebook \texttt{01\_Serie\_trigonometrica\_y\_compleja.ipynb} trae al final un
+\emph{verificador} que calcula numéricamente $a_n$, $b_n$, $C_n$ y $C_{-n}$ de la onda
+cuadrada, para comparar con lo obtenido a mano.
+\end{notatec}
+
+\newpage
+%=======================================================================
+\section*{Respuestas de control}
+\addcontentsline{toc}{section}{Respuestas de control}
+%=======================================================================
+Intenta los ejercicios antes de mirar esta página.
+\small\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+
+\subsection*{Parte A}
+\begin{enumerate}
+    \item $T=4$~s: $f_0=\qty{0.25}{\hertz}$ y $\omega_0=\pi/2\approx\qty{1.571}{\radian\per\second}$.
+          $\;T=\qty{0.02}{\second}$: $f_0=\qty{50}{\hertz}$ y
+          $\omega_0=100\pi\approx\qty{314.16}{\radian\per\second}$.
+    \item (a)~$t^{2}$ es par: $b_n=0$ (solo cosenos y término continuo).
+          (b)~$t^{3}$ es impar: $a_0=0$ y $a_n=0$ (solo senos).
+          (c)~La constante $5$ es par: solo $a_0=10$; todos los $a_n$ y $b_n$ ($n\ge1$) son cero.
+    \item $a_2=3$ y $b_2=4$; luego $C_2=\dfrac{3-4j}{2}=1{,}5-2j$ y
+          $C_{-2}=\dfrac{3+4j}{2}=1{,}5+2j$.
+    \item $C_{-3}=1-2j$; $a_3=C_3+C_{-3}=2$; $b_3=j(C_3-C_{-3})=j\cdot4j=-4$.
+    \item Converge al promedio de los límites laterales: $\dfrac{2+6}{2}=4$.
+\end{enumerate}
+
+\subsection*{Parte B}
+\begin{enumerate}[label=\textbf{Paso \arabic*.},leftmargin=*,labelsep=0.6em]
+    \item $\omega_0=\qty{1}{\radian\per\second}$. La señal es \textbf{impar}: $a_0=0$ y $a_n=0$.
+    \item $a_0=0$ y $a_n=0$ por paridad.
+    \item
+          \begin{equation*}
+            b_n=\frac{2}{\pi}\int_{0}^{\pi}\sen(nt)\,dt
+            =\frac{2}{\pi}\left[-\frac{\cos(nt)}{n}\right]_{0}^{\pi}
+            =\frac{2\big(1-(-1)^{n}\big)}{n\pi}
+          \end{equation*}
+          Para $n$ impar, $b_n=\dfrac{4}{n\pi}$; para $n$ par, $b_n=0$.
+    \item $\displaystyle f(t)=\frac{4}{\pi}\left[\sen t+\frac{1}{3}\sen3t+\frac{1}{5}\sen5t+\cdots\right]$.
+          Solo hay armónicos \textbf{impares}.
+    \item
+          \begin{equation*}
+            C_n=\frac{1}{2\pi}\left[-\int_{-\pi}^{0}e^{-jnt}dt+\int_{0}^{\pi}e^{-jnt}dt\right]
+            =\frac{1-(-1)^{n}}{j\,n\pi}=-\frac{j\big(1-(-1)^{n}\big)}{n\pi}
+          \end{equation*}
+          Para $n$ impar, $C_n=-\dfrac{2j}{n\pi}$; para $n$ par, $C_n=0$. Además $C_0=0$.
+    \item $C_n=\dfrac{0-jb_n}{2}=-\dfrac{j}{2}\cdot\dfrac{4}{n\pi}=-\dfrac{2j}{n\pi}$ ($n$ impar):
+          coincide. $C_{-n}=\dfrac{2j}{n\pi}$.
+    \item
+          \begin{center}
+          \small\renewcommand{\arraystretch}{1.35}
+          \begin{tabular}{ccccc}
+          \toprule
+          $n$ & $a_n$ & $b_n$ & $C_n$ & $C_{-n}$\\
+          \midrule
+          1 & 0 & $\dfrac{4}{\pi}\approx1{,}273$ & $-\dfrac{2j}{\pi}$ & $\dfrac{2j}{\pi}$\\
+          2 & 0 & 0 & 0 & 0\\
+          3 & 0 & $\dfrac{4}{3\pi}\approx0{,}424$ & $-\dfrac{2j}{3\pi}$ & $\dfrac{2j}{3\pi}$\\
+          4 & 0 & 0 & 0 & 0\\
+          5 & 0 & $\dfrac{4}{5\pi}\approx0{,}255$ & $-\dfrac{2j}{5\pi}$ & $\dfrac{2j}{5\pi}$\\
+          \bottomrule
+          \end{tabular}
+          \end{center}
+    \item En la plantilla: \py{bn = np.where(n \% 2 == 1, 4 / (n * np.pi), 0)}. En $t=0$ la
+          serie vale $0$ (promedio de $-1$ y $1$). En $t=\pi/2$ vale $1$:
+          $\dfrac{4}{\pi}\left(1-\dfrac{1}{3}+\dfrac{1}{5}-\cdots\right)=\dfrac{4}{\pi}\cdot\dfrac{\pi}{4}=1$.
+          Sí aparece Gibbs: junto a cada salto el pico supera a $1$ en cerca del
+          9~\% del tamaño del salto ($2$), es decir llega a $\approx1{,}18$, y no baja al
+          aumentar $N$.
 \end{enumerate}
 
 \end{document}

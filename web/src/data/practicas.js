@@ -198,9 +198,9 @@ export const MATERIAL_CLASE = [
     subtitulo: 'Método trigonométrico y exponencial complejo',
     estado: 'disponible',
     tipo: 'Material de clase',
-    extension: '23 páginas',
+    extension: '27 páginas',
     resumen:
-      'Un único ejercicio —la onda diente de sierra f(t) = t— resuelto paso a paso por los dos métodos: la serie de senos y cosenos y la serie de exponenciales complejas. Se demuestra la equivalencia entre ambos con las identidades de Euler, se explica qué son las frecuencias negativas y la simetría conjugada, y se cierra con la aproximación por armónicos y el fenómeno de Gibbs. Incluye apéndice de identidades y código en Python.',
+      'Un único ejercicio —la onda diente de sierra f(t) = t— resuelto paso a paso por los dos métodos: la serie de senos y cosenos y la serie de exponenciales complejas. Se demuestra la equivalencia entre ambos con las identidades de Euler, se explica qué son las frecuencias negativas y la simetría conjugada, y se cierra con la aproximación por armónicos y el fenómeno de Gibbs. Incluye apéndice de identidades, código en Python, ejercicios cortos y un ejercicio completo (onda cuadrada) para repetir todo el recorrido.',
     objetivos: [
       'Distinguir período, frecuencia fundamental, frecuencia angular, armónicos y componente continua.',
       'Calcular a₀, aₙ y bₙ de una señal periódica con paridad e integración por partes.',
@@ -221,18 +221,18 @@ export const MATERIAL_CLASE = [
     ],
     documento: {
       src: 'material/fourier/Series_de_Fourier.pdf',
-      paginas: 23,
-      peso: '0.35 MB',
+      paginas: 27,
+      peso: '0.38 MB',
     },
     descargas: [
       {
         etiqueta: 'Documento en PDF',
         detalle:
-          'Resolución completa paso a paso, con figuras, tablas de coeficientes, fórmulas de resumen, apéndice de identidades y ejercicios propuestos',
+          'Resolución completa paso a paso, con figuras, tablas de coeficientes, fórmulas de resumen, apéndice de identidades, ejercicios cortos y un ejercicio completo con otra señal',
         archivo: 'material/fourier/Series_de_Fourier.pdf',
         nombre: 'Series_de_Fourier_Senales_y_Sistemas.pdf',
         tipo: 'PDF',
-        peso: '0.35 MB',
+        peso: '0.38 MB',
         destacado: true,
       },
       {
@@ -251,7 +251,7 @@ export const MATERIAL_CLASE = [
         archivo: 'material/fourier/01_Serie_trigonometrica_y_compleja.ipynb',
         nombre: '01_Serie_trigonometrica_y_compleja.ipynb',
         tipo: 'IPYNB',
-        peso: '53 KB',
+        peso: '60 KB',
         destacado: false,
       },
       {
@@ -260,7 +260,7 @@ export const MATERIAL_CLASE = [
         archivo: 'material/fourier/Series_de_Fourier.tex',
         nombre: 'Series_de_Fourier.tex',
         tipo: 'TEX',
-        peso: '56 KB',
+        peso: '64 KB',
         destacado: false,
       },
     ],
